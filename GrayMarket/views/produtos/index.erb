@@ -36,14 +36,14 @@
         <% if produto.categoria %>
           <span class="categoria-tag"><%= produto.categoria %></span>
         <% end %>
-        <% if produto.categoria == "Kits" %>
-          <span class="categoria-tag" style="background:#ff5c5c; color:#fff;">22% OFF!</span>
+        <% if produto.desconto_percentual %>
+          <span class="categoria-tag" style="background:#ff5c5c; color:#fff;"><%= produto.desconto_percentual %>% OFF!</span>
         <% end %>
         <h3><a href="/produtos/<%= produto.id %>"><%= produto.nome %></a></h3>
         <p><%= produto.descricao %></p>
         <p class="preco"><%= formatar_preco(produto.preco) %></p>
         <p class="<%= "estoque-baixo" if produto.estoque <= 3 %>">Estoque: <%= produto.estoque %></p>
-        <a href="/produtos/<%= produto.id %>" class="botao">Ver detalhes</a>
+        <a href="/produtos/<%= produto.id %>" class="botao">Comprar agora</a>
       </div>
     <% end %>
   </div>

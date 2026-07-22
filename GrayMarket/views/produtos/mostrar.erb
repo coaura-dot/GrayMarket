@@ -9,28 +9,24 @@
   <% if @produto.categoria %>
     <span class="categoria-tag"><%= @produto.categoria %></span>
   <% end %>
-  <% if @produto.categoria == "Kits" %>
-    <span class="categoria-tag" style="background:#ff5c5c; color:#fff;">22% OFF!</span>
+  <% if @produto.desconto_percentual %>
+    <span class="categoria-tag" style="background:#ff5c5c; color:#fff;"><%= @produto.desconto_percentual %>% OFF!</span>
   <% end %>
   <h1><%= @produto.nome %></h1>
   <p><%= @produto.descricao %></p>
   <p class="preco"><%= formatar_preco(@produto.preco) %></p>
   <p>Estoque disponível: <strong><%= @produto.estoque %></strong></p>
 
-  <% if logado? %>
-    <% if @produto.disponivel? %>
-      <form action="/carrinho/<%= @produto.id %>" method="post">
-        <div class="form-grupo" style="max-width:140px;">
-          <label for="quantidade">Quantidade</label>
-          <input type="number" id="quantidade" name="quantidade" value="1" min="1" max="<%= @produto.estoque %>">
-        </div>
-        <button type="submit" class="botao">Adicionar ao carrinho</button>
-      </form>
-    <% else %>
-      <p class="estoque-baixo">Produto sem estoque no momento.</p>
-    <% end %>
+  <% if @produto.disponivel? %>
+    <form action="/carrinho/<%= @produto.id %>" method="post">
+      <div class="form-grupo" style="max-width:140px;">
+        <label for="quantidade">Quantidade</label>
+        <input type="number" id="quantidade" name="quantidade" value="1" min="1" max="<%= @produto.estoque %>">
+      </div>
+      <button type="submit" class="botao">Adicionar ao carrinho</button>
+    </form>
   <% else %>
-    <p><a href="/login">Entre na sua conta</a> para comprar este item.</p>
+    <p class="estoque-baixo">Produto sem estoque no momento.</p>
   <% end %>
 
   <p style="margin-top:16px;"><a href="/">&larr; Voltar à loja</a></p>

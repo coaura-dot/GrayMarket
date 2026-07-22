@@ -27,4 +27,12 @@ class Produto < ActiveRecord::Base
   def disponivel?
     estoque > 0
   end
+
+  # Retorna o percentual de desconto real (arredondado), com base no
+  # preco_original salvo no banco. Retorna nil se não houver desconto.
+  def desconto_percentual
+    return nil if preco_original.blank? || preco_original <= preco
+
+    (100 - (preco / preco_original * 100)).round
+  end
 end

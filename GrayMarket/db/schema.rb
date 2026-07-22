@@ -1,4 +1,4 @@
-ActiveRecord::Schema.define(version: 2026_07_22_000001) do
+ActiveRecord::Schema.define(version: 2026_07_22_000002) do
   create_table "usuarios", force: :cascade do |t|
     t.string "nome", null: false
     t.string "email", null: false
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2026_07_22_000001) do
     t.integer "vendedor_id", null: false
     t.string "categoria"
     t.decimal "avaliacao", precision: 3, scale: 2
+    t.decimal "preco_original", precision: 10, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["vendedor_id"], name: "index_produtos_on_vendedor_id"
