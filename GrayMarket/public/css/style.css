@@ -1025,3 +1025,47 @@ th:first-child, td:first-child { width: 50px; }
   .card-produto { padding: 12px; }
   .card-produto-imagem { width: 84px; height: 84px; }
 }
+
+/* ---------- Dropzone (arrastar e soltar comprovante) ---------- */
+.dropzone {
+  position: relative;
+  border: 2px dashed var(--borda-forte);
+  border-radius: var(--raio-peq);
+  padding: 28px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color .25s var(--transicao), background .25s var(--transicao);
+  background: rgba(255, 255, 255, .02);
+}
+.dropzone:hover {
+  border-color: var(--laranja);
+  background: var(--laranja-fraco);
+}
+.dropzone.dropzone-ativa {
+  border-color: var(--laranja-2);
+  background: var(--laranja-fraco);
+}
+.dropzone input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.dropzone-conteudo {
+  pointer-events: none;
+}
+.dropzone-conteudo p {
+  margin: 4px 0 0;
+  color: var(--texto);
+}
+.dropzone-icone {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 6px;
+}
+.dropzone-ou {
+  font-size: .85rem;
+  color: var(--texto-fraco) !important;
+}

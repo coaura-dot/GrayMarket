@@ -1,7 +1,7 @@
 class Venda < ActiveRecord::Base
   STATUSES = %w[pendente paga enviada entregue cancelada].freeze
 
-  belongs_to :comprador, class_name: "Usuario", inverse_of: :compras
+  belongs_to :comprador, class_name: "Usuario", inverse_of: :compras, optional: true
   belongs_to :vendedor, class_name: "Usuario", inverse_of: :vendas
   has_many :item_vendas, dependent: :destroy
   has_many :produtos, through: :item_vendas

@@ -14,7 +14,14 @@
   <form id="form-comprovante">
     <div class="form-grupo">
       <label for="comprovante">Foto do comprovante</label>
-      <input type="file" id="comprovante" name="comprovante" accept="image/*" required>
+      <div id="dropzone-comprovante" class="dropzone">
+        <input type="file" id="comprovante" name="comprovante" accept="image/*" required>
+        <div class="dropzone-conteudo" id="dropzone-conteudo">
+          <span class="dropzone-icone">📎</span>
+          <p><strong>Arraste e solte</strong> a imagem aqui</p>
+          <p class="dropzone-ou">ou clique para escolher o arquivo</p>
+        </div>
+      </div>
     </div>
     <button type="submit" class="botao" id="btn-enviar-comprovante">Enviar comprovante</button>
   </form>
@@ -40,6 +47,49 @@
   const alertaSucesso = document.getElementById("pix-alerta-sucesso");
   const alertaErro = document.getElementById("pix-alerta-erro");
   const btnEnviar = document.getElementById("btn-enviar-comprovante");
+  const inputArquivo = document.getElementById("comprovante");
+  const dropzone = document.getElementById("dropzone-comprovante");
+  const dropzoneConteudo = document.getElementById("dropzone-conteudo");
+
+  function mostrarArquivoSelecionado(arquivo) {
+    if (!arquivo) return;
+    dropzoneConteudo.innerHTML =
+      '<span class="dropzone-icone">✅</span>' +
+      "<p><strong>" + arquivo.name + "</strong></p>" +
+      '<p class="dropzone-ou">Clique ou arraste outro arquivo para trocar</p>';
+  }
+
+  inputArquivo.addEventListener("change", function () {
+    mostrarArquivoSelecionado(inputArquivo.files[0]);
+  });
+
+  ["dragenter", "dragover"].forEach(function (evento) {
+    dropzone.addEventListener(evento, function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      dropzone.classList.add("dropzone-ativa");
+    });
+  });
+
+  ["dragleave", "dragend"].forEach(function (evento) {
+    dropzone.addEventListener(evento, function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      dropzone.classList.remove("dropzone-ativa");
+    });
+  });
+
+  dropzone.addEventListener("drop", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    dropzone.classList.remove("dropzone-ativa");
+
+    const arquivos = e.dataTransfer.files;
+    if (arquivos && arquivos.length > 0) {
+      inputArquivo.files = arquivos;
+      mostrarArquivoSelecionado(arquivos[0]);
+    }
+  });
 
   form.addEventListener("submit", function (evento) {
     evento.preventDefault();

@@ -16,7 +16,7 @@
         <h3>Pedido #<%= venda.id %></h3>
         <span class="status-<%= venda.status %>"><%= venda.status.capitalize %></span>
       </div>
-      <p class="pedido-meta">Data: <%= venda.data %> &nbsp;·&nbsp; Comprador: <%= venda.comprador.nome %> (<%= venda.comprador.email %>) &nbsp;·&nbsp; Total: <strong style="color:var(--ouro)"><%= formatar_preco(venda.valor_total) %></strong></p>
+      <p class="pedido-meta">Data: <%= venda.data %> &nbsp;·&nbsp; Comprador: <%= venda.comprador ? "#{venda.comprador.nome} (#{venda.comprador.email})" : "Convidado (sem conta)" %> &nbsp;·&nbsp; Total: <strong style="color:var(--ouro)"><%= formatar_preco(venda.valor_total) %></strong></p>
       <% if venda.endereco_entrega.present? %>
         <p class="pedido-meta" style="opacity:.85;"><%= venda.endereco_entrega %></p>
       <% end %>

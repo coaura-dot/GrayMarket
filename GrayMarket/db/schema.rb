@@ -1,4 +1,4 @@
-ActiveRecord::Schema.define(version: 2026_06_01_000004) do
+ActiveRecord::Schema.define(version: 2026_07_22_000001) do
   create_table "usuarios", force: :cascade do |t|
     t.string "nome", null: false
     t.string "email", null: false
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2026_06_01_000004) do
   end
 
   create_table "vendas", force: :cascade do |t|
-    t.integer "comprador_id", null: false
+    t.integer "comprador_id"
     t.integer "vendedor_id", null: false
     t.date "data", null: false
     t.string "status", default: "pendente", null: false

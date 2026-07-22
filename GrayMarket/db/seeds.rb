@@ -8,11 +8,11 @@ Usuario.delete_all
 
 puts "Criando usuários..."
 vendedor = Usuario.create!(
-  nome: "Loja Oficial GreyMarket",
+  nome: "Loja Oficial BAWMC",
   email: "loja@bawmc.net",
   cpf: "00000000000",
   telefone: "(62) 90000-0000",
-  senha: "325769148"
+  senha: "123456"
 )
 
 comprador = Usuario.create!(
@@ -20,7 +20,7 @@ comprador = Usuario.create!(
   email: "steve@bawmc.net",
   cpf: "11111111111",
   telefone: "(62) 91111-1111",
-  senha: "325769148"
+  senha: "123456"
 )
 
 puts "Criando produtos..."
@@ -103,12 +103,17 @@ produtos = [
     preco: 3.49, estoque: 88 },
 
   # ---------- Kits (preço total dos itens avulsos -22%) ----------
-  { nome: "Kit de Netherite", categoria: "Kits",
-    descricao: "22% OFF! Picareta, pá, machado e espada de Netherite + armadura de Netherite completa (capacete, peitoral, calça e botas). 22% de desconto sobre o preço total dos itens avulsos.",
-    preco: (preco_netherite * 8 * 0.78).round(2), estoque: 20 },
+  { nome: "Spawner", categoria: "Kits",
+    descricao: "Spawner de mob à sua escolha, entregue diretamente no seu terreno.",
+    preco: 10.99, estoque: 20 },
   { nome: "Kit de Diamante", categoria: "Kits",
-    descricao: "22% OFF! Picareta, pá, machado e espada de Diamante + armadura de Diamante completa (capacete, peitoral, calça e botas). 22% de desconto sobre o preço total dos itens avulsos.",
-    preco: (preco_diamante * 8 * 0.78).round(2), estoque: 20 },
+    descricao: (
+      preco_kit_diamante = 17.99
+      preco_avulso_diamante = (preco_diamante * 8).round(2)
+      desconto_diamante = (100 - (preco_kit_diamante / preco_avulso_diamante * 100)).round
+      "#{desconto_diamante}% OFF! Picareta, pá, machado e espada de Diamante + armadura de Diamante completa (capacete, peitoral, calça e botas). De R$ #{format('%.2f', preco_avulso_diamante).tr('.', ',')} por R$ #{format('%.2f', preco_kit_diamante).tr('.', ',')}."
+    ),
+    preco: 17.99, estoque: 20 },
 ]
 
 produtos.each { |attrs| vendedor.produtos.create!(attrs) }

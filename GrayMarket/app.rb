@@ -291,7 +291,6 @@ class BawmcStore < Sinatra::Base
   # da rota curinga "/carrinho/:produto_id", senão o Sinatra casa a rota
   # errada primeiro (produto_id acabaria sendo "finalizar").
   get "/carrinho" do
-    exigir_login!
     @itens = carrinho.map do |produto_id, quantidade|
       produto = Produto.find_by(id: produto_id)
       next nil unless produto
@@ -303,8 +302,6 @@ class BawmcStore < Sinatra::Base
   end
 
   post "/carrinho/finalizar" do
-    exigir_login!
-
     if carrinho.empty?
       erro("Seu carrinho está vazio.")
       redirect "/carrinho"
@@ -348,7 +345,6 @@ class BawmcStore < Sinatra::Base
   end
 
   post "/carrinho/:produto_id/remover" do
-    exigir_login!
     novo_carrinho = carrinho.dup
     novo_carrinho.delete(params[:produto_id].to_s)
     session[:carrinho] = novo_carrinho
@@ -357,7 +353,6 @@ class BawmcStore < Sinatra::Base
   end
 
   post "/carrinho/:produto_id" do
-    exigir_login!
     produto = Produto.find_by(id: params[:produto_id])
     halt 404 unless produto
 
