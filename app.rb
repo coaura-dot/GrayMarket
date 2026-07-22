@@ -79,6 +79,7 @@ class BawmcStore < Sinatra::Base
     # palavras-chave do nome. Cai para um ícone genérico por categoria
     # se nada específico for encontrado.
     ICONES_PRODUTO = {
+      /spawner/i                   => "spawner",
       /kit/i                       => "shulker_box",
       /capacete de diamante/i      => "diamond_helmet",
       /peitoral de diamante/i      => "diamond_chestplate",
@@ -134,7 +135,8 @@ class BawmcStore < Sinatra::Base
     @produtos = @produtos.where(categoria: @categoria) if @categoria.present?
     @produtos = @produtos.order(created_at: :desc).to_a
     @produtos = @produtos.sort_by.with_index do |produto, indice|
-      [Produto::ORDEM_EXIBICAO.fetch(produto.categoria, Produto::ORDEM_PADRAO), indice]
+      prioridade_produto = produto.nome == "Spawner" ? -1 : Produto::ORDEM_EXIBICAO.fetch(produto.categoria, Produto::ORDEM_PADRAO)
+      [prioridade_produto, indice]
     end
     erb :"produtos/index"
   end
