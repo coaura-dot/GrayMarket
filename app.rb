@@ -35,6 +35,23 @@ class BawmcStore < Sinatra::Base
       !usuario_atual.nil?
     end
 
+    # Apenas a conta oficial da loja pode cadastrar produtos e ver o
+    # histórico de vendas de todos os clientes. Usuários comuns só têm
+    # acesso às próprias compras (Minhas Compras).
+    ADMIN_EMAILS = ["loja@bawmc.net"].freeze
+
+    def admin?
+      logado? && ADMIN_EMAILS.include?(usuario_atual.email.to_s.downcase)
+    end
+
+    def exigir_admin!
+      exigir_login!
+      unless admin?
+        session[:erro] = "Acesso restrito à administração da loja."
+        redirect "/"
+      end
+    end
+
     def exigir_login!
       unless logado?
         session[:erro] = "Você precisa entrar na sua conta para continuar."
@@ -196,19 +213,19 @@ class BawmcStore < Sinatra::Base
 
   # ---------- Vendedor: CRUD de produtos ----------
   get "/meus_produtos" do
-    exigir_login!
+    exigir_admin!
     @produtos = usuario_atual.produtos.order(created_at: :desc)
     erb :"produtos/meus"
   end
 
   get "/produtos/novo" do
-    exigir_login!
+    exigir_admin!
     @produto = Produto.new
     erb :"produtos/novo"
   end
 
   post "/produtos" do
-    exigir_login!
+    exigir_admin!
     @produto = usuario_atual.produtos.new(
       nome: params[:nome],
       descricao: params[:descricao],
@@ -232,14 +249,14 @@ class BawmcStore < Sinatra::Base
   end
 
   get "/produtos/:id/editar" do
-    exigir_login!
+    exigir_admin!
     @produto = usuario_atual.produtos.find_by(id: params[:id])
     halt 404, erb(:"produtos/nao_encontrado") unless @produto
     erb :"produtos/editar"
   end
 
   post "/produtos/:id" do
-    exigir_login!
+    exigir_admin!
     @produto = usuario_atual.produtos.find_by(id: params[:id])
     halt 404, erb(:"produtos/nao_encontrado") unless @produto
 
@@ -258,7 +275,7 @@ class BawmcStore < Sinatra::Base
   end
 
   post "/produtos/:id/excluir" do
-    exigir_login!
+    exigir_admin!
     @produto = usuario_atual.produtos.find_by(id: params[:id])
     halt 404, erb(:"produtos/nao_encontrado") unless @produto
     @produto.destroy
@@ -396,15 +413,23 @@ class BawmcStore < Sinatra::Base
     redirect "/minhas_compras"
   end
 
-  # ---------- Vendedor: vendas recebidas ----------
+  # ---------- Vendedor: vendas recebidas (histórico completo para o admin/dono da loja) ----------
   get "/vendas_recebidas" do
-    exigir_login!
+    exigir_admin!
+    @termo = params[:q].to_s.strip
     @vendas = usuario_atual.vendas.includes(:comprador, item_vendas: :produto).order(created_at: :desc)
+    if @termo.present?
+      termo = "%#{@termo.downcase}%"
+      @vendas = @vendas.where(
+        "lower(usuarios.nome) LIKE :t OR lower(usuarios.email) LIKE :t OR lower(vendas.endereco_entrega) LIKE :t OR vendas.id = :id",
+        t: termo, id: @termo.to_i
+      ).references(:comprador)
+    end
     erb :"vendas/recebidas"
   end
 
   post "/vendas/:id/avancar" do
-    exigir_login!
+    exigir_admin!
     venda = usuario_atual.vendas.find_by(id: params[:id])
     halt 404 unless venda
 
