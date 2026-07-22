@@ -132,7 +132,10 @@ class BawmcStore < Sinatra::Base
     @categoria = params[:categoria]
     @produtos = Produto.includes(:vendedor).busca(@termo)
     @produtos = @produtos.where(categoria: @categoria) if @categoria.present?
-    @produtos = @produtos.order(created_at: :desc)
+    @produtos = @produtos.order(created_at: :desc).to_a
+    @produtos = @produtos.sort_by.with_index do |produto, indice|
+      [Produto::ORDEM_EXIBICAO.fetch(produto.categoria, Produto::ORDEM_PADRAO), indice]
+    end
     erb :"produtos/index"
   end
 

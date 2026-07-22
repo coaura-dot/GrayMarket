@@ -11,7 +11,7 @@ vendedor = Usuario.create!(
   nome: "Loja Oficial GreyMarket",
   email: "loja@bawmc.net",
   cpf: "00000000000",
-  telefone: "(62) 99430-3373",
+  telefone: "(62) 90000-0000",
   senha: "325769148"
 )
 

@@ -9,6 +9,16 @@ class Produto < ActiveRecord::Base
 
   CATEGORIAS = ["Netherite", "Diamante", "Maça e Tridente", "Kits", "Esmeralda", "Blocos"].freeze
 
+  # Ordem de exibição na listagem: Kits primeiro, depois Netherite,
+  # depois Maça e Tridente, e por fim o resto (na ordem que aparecerem).
+  ORDEM_EXIBICAO = {
+    "Kits" => 0,
+    "Netherite" => 1,
+    "Maça e Tridente" => 2
+  }.freeze
+
+  ORDEM_PADRAO = ORDEM_EXIBICAO.values.max + 1
+
   scope :busca, ->(termo) {
     termo.present? ? where("lower(nome) LIKE :t OR lower(descricao) LIKE :t OR lower(categoria) LIKE :t",
                             t: "%#{termo.to_s.downcase}%") : all
