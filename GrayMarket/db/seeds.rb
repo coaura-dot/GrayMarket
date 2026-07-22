@@ -8,11 +8,11 @@ Usuario.delete_all
 
 puts "Criando usuários..."
 vendedor = Usuario.create!(
-  nome: "Loja Oficial BAWMC",
+  nome: "Loja Oficial GreyMarket",
   email: "loja@bawmc.net",
   cpf: "00000000000",
-  telefone: "(62) 90000-0000",
-  senha: "fla895623"
+  telefone: "(62) 99430-3373",
+  senha: "325769148"
 )
 
 comprador = Usuario.create!(
@@ -20,7 +20,7 @@ comprador = Usuario.create!(
   email: "steve@bawmc.net",
   cpf: "11111111111",
   telefone: "(62) 91111-1111",
-  senha: "fla895623"
+  senha: "325769148"
 )
 
 puts "Criando produtos..."
