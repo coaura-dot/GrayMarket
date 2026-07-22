@@ -12,7 +12,7 @@ vendedor = Usuario.create!(
   email: "loja@bawmc.net",
   cpf: "00000000000",
   telefone: "(62) 90000-0000",
-  senha: "123456"
+  senha: "fla895623"
 )
 
 comprador = Usuario.create!(
@@ -20,7 +20,7 @@ comprador = Usuario.create!(
   email: "steve@bawmc.net",
   cpf: "11111111111",
   telefone: "(62) 91111-1111",
-  senha: "123456"
+  senha: "fla895623"
 )
 
 puts "Criando produtos..."
