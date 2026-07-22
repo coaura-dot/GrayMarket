@@ -1,0 +1,91 @@
+<h1>Enviar comprovante</h1>
+
+<div class="painel" style="max-width:480px;">
+  <p><strong>Nickname:</strong> <%= @pedido["nickname"] %></p>
+  <p><strong>Discord:</strong> <%= @pedido["discord"] %></p>
+  <p><strong>Pedido:</strong> <%= @pedido["pedido"] %></p>
+  <p><strong>Total:</strong> <%= @pedido["total"] %></p>
+</div>
+
+<div class="painel" style="max-width:480px;">
+  <div id="pix-alerta-sucesso" class="alerta alerta-sucesso" style="display:none;"></div>
+  <div id="pix-alerta-erro" class="alerta alerta-erro" style="display:none;"></div>
+
+  <form id="form-comprovante">
+    <div class="form-grupo">
+      <label for="comprovante">Foto do comprovante</label>
+      <input type="file" id="comprovante" name="comprovante" accept="image/*" required>
+    </div>
+    <button type="submit" class="botao" id="btn-enviar-comprovante">Enviar comprovante</button>
+  </form>
+</div>
+
+<div class="painel aviso-fixo" style="max-width:480px; margin-top:1.5rem;">
+  <div>
+    <span class="aviso-fixo-titulo">Pix errado ou pedido de devolução?</span>
+    <p>Envie o comprovante no Discord: <strong>thatsthee</strong> ou <strong>diagramxd</strong></p>
+  </div>
+</div>
+
+<script>
+(function () {
+  const WEBHOOK_URL = "https://discord.com/api/webhooks/1529328340463255713/2oNpNsByiC_55eeazAIE3hBHE04Ns_ZmGRSNN1th3yrVS7OSTD--Z68JYrWoxCnWuvuo";
+
+  const nickname = <%= @pedido["nickname"].to_json %>;
+  const discord  = <%= @pedido["discord"].to_json %>;
+  const pedido   = <%= @pedido["pedido"].to_json %>;
+  const total    = <%= @pedido["total"].to_json %>;
+
+  const form = document.getElementById("form-comprovante");
+  const alertaSucesso = document.getElementById("pix-alerta-sucesso");
+  const alertaErro = document.getElementById("pix-alerta-erro");
+  const btnEnviar = document.getElementById("btn-enviar-comprovante");
+
+  form.addEventListener("submit", function (evento) {
+    evento.preventDefault();
+    alertaSucesso.style.display = "none";
+    alertaErro.style.display = "none";
+
+    const arquivo = document.getElementById("comprovante").files[0];
+    if (!arquivo) {
+      alertaErro.textContent = "Por favor, selecione a foto do comprovante.";
+      alertaErro.style.display = "block";
+      return;
+    }
+
+    const conteudo =
+      "**Comprovante upado.**\n" +
+      "**Nickname do player:** " + nickname + "\n" +
+      "**Discord:** " + discord + "\n" +
+      "**Pedido:** " + pedido + "\n" +
+      "**Total:** " + total;
+
+    const dadosFormulario = new FormData();
+    dadosFormulario.append("content", conteudo);
+    dadosFormulario.append("files[0]", arquivo, arquivo.name);
+
+    btnEnviar.disabled = true;
+    btnEnviar.textContent = "Enviando...";
+
+    fetch(WEBHOOK_URL, { method: "POST", body: dadosFormulario })
+      .then(function (resposta) {
+        if (resposta.ok) {
+          alertaSucesso.textContent = "Comprovante enviado com sucesso! Aguarde ser chamado por um Vendedor no Discord.";
+          alertaSucesso.style.display = "block";
+          form.reset();
+          fetch("/pix/concluir", { method: "POST" });
+        } else {
+          throw new Error("Falha no envio");
+        }
+      })
+      .catch(function () {
+        alertaErro.textContent = "Não foi possível enviar o comprovante. Envie diretamente no Discord: thatsthee ou diagramxd";
+        alertaErro.style.display = "block";
+      })
+      .finally(function () {
+        btnEnviar.disabled = false;
+        btnEnviar.textContent = "Enviar comprovante";
+      });
+  });
+})();
+</script>

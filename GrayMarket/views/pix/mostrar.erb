@@ -1,0 +1,29 @@
+<h1>Pagamento via Pix</h1>
+
+<div class="painel" style="max-width:480px;">
+  <p>Pedido de <strong><%= @pedido["nickname"] %></strong> — total: <strong><%= @pedido["total"] %></strong></p>
+  <p style="opacity:.85;"><%= @pedido["pedido"] %></p>
+</div>
+
+<div class="painel" style="max-width:480px; text-align:center;">
+  <h2>Pix Copia e Cola</h2>
+  <p style="word-break:break-all; font-family:monospace; font-size:0.85rem; user-select:all;" id="chave-pix">00020126330014br.gov.bcb.pix0111710237301545204000053039865802BR5925Igor Claudio Gurgel Da Si6009Sao Paulo62290525REC6A603C207E5B57702921356304BDDB</p>
+  <button type="button" class="botao" id="btn-copiar" style="margin-bottom:1.5rem;">Copiar código Pix</button>
+
+  <h2>Ou escaneie o QR Code</h2>
+  <img src="/images/pix_qrcode.png" alt="QR Code Pix" style="max-width:260px; width:100%; border-radius:8px; margin-top:.5rem;">
+
+  <p style="margin-top:1.5rem;">Depois de pagar, envie o comprovante na próxima tela.</p>
+  <a href="/pix/comprovante" class="botao">Já paguei — enviar comprovante</a>
+</div>
+
+<script>
+document.getElementById("btn-copiar").addEventListener("click", function () {
+  const chave = document.getElementById("chave-pix").textContent.trim();
+  navigator.clipboard.writeText(chave).then(function () {
+    const btn = document.getElementById("btn-copiar");
+    btn.textContent = "Código copiado!";
+    setTimeout(function () { btn.textContent = "Copiar código Pix"; }, 2000);
+  });
+});
+</script>

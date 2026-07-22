@@ -1,0 +1,70 @@
+<h1>Meu Carrinho</h1>
+
+<% if @itens.empty? %>
+  <p>Seu carrinho está vazio. <a href="/">Voltar à loja</a></p>
+<% else %>
+  <div class="tabela-wrap">
+  <table class="tabela-cards">
+    <thead>
+      <tr><th></th><th>Produto</th><th>Preço unitário</th><th>Quantidade</th><th>Subtotal</th><th>Ação</th></tr>
+    </thead>
+    <tbody>
+      <% @itens.each do |item| %>
+        <tr>
+          <td class="linha-imagem"><img class="icone-tabela" src="/images/itens/<%= icone_produto(item[:produto]) %>.png" alt=""></td>
+          <td data-label="Produto"><%= item[:produto].nome %></td>
+          <td data-label="Preço unit."><%= formatar_preco(item[:produto].preco) %></td>
+          <td data-label="Quantidade"><%= item[:quantidade] %></td>
+          <td data-label="Subtotal"><%= formatar_preco(item[:produto].preco * item[:quantidade]) %></td>
+          <td data-label="Ação">
+            <form action="/carrinho/<%= item[:produto].id %>/remover" method="post">
+              <button type="submit" class="botao botao-secundario" style="border-color:#ff5c5c; color:#ff5c5c; white-space:nowrap;">Remover item</button>
+            </form>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+
+  <div style="margin:1rem 0 1.5rem;">
+    <a href="/" class="botao botao-secundario">+ Adicionar mais itens ao carrinho</a>
+  </div>
+
+  <h2>Total: <%= formatar_preco(@total) %></h2>
+
+  <div class="painel" style="max-width:560px;">
+    <form action="/carrinho/finalizar" method="post">
+      <div class="form-grupo">
+        <label for="nickname">Campo 1 — Informe o nickname do player que irá receber o pedido</label>
+        <input type="text" id="nickname" name="nickname" placeholder="Ex: Steve_BR" value="<%= session[:pedido_pix] && session[:pedido_pix]['nickname'] %>" required>
+      </div>
+      <div class="form-grupo">
+        <label for="pedido">Campo 2 — E qual pedido deseja receber</label>
+        <textarea id="pedido" name="pedido" rows="3" placeholder="Ex: 1 machado de netherite, 1 picareta de netherite com FORTUNA III" required><%= (session[:pedido_pix] && session[:pedido_pix]["pedido"]) || @resumo_itens %></textarea>
+        <button type="button" class="link-botao" id="btn-usar-carrinho" style="margin-top:6px;">Preencher com os itens do carrinho</button>
+      </div>
+      <div class="form-grupo">
+        <label for="discord">Campo 3 — Informe o seu Discord</label>
+        <input type="text" id="discord" name="discord" placeholder="Ex: seunome" value="<%= session[:pedido_pix] && session[:pedido_pix]['discord'] %>" required>
+      </div>
+      <button type="submit" class="botao">Ir para pagamento</button>
+    </form>
+  </div>
+
+  <div class="painel aviso-fixo" style="max-width:560px; margin-top:1.5rem;">
+    <div>
+      <span class="aviso-fixo-titulo">Como funciona a entrega</span>
+      <p>Ao comprar um item na GrayMarket, você será chamado assim que possível por um Vendedor, e será combinado quando o item será entregue.</p>
+      <p>O Vendedor te enviará um TPA, e dropará o item ou kit comprado após o pagamento ser confirmado.</p>
+      <p>Caso tenha qualquer problema, entre em contato nos discords: <strong>thatsthee</strong> ou <strong>diagramxd</strong></p>
+      <p>Obrigado por comprar na GrayMarket!</p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("btn-usar-carrinho").addEventListener("click", function () {
+      document.getElementById("pedido").value = <%= @resumo_itens.to_json %>;
+    });
+  </script>
+<% end %>
