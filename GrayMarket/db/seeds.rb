@@ -116,24 +116,24 @@ produtos = [
                "<br>&bull; 3x Armadura Completa de Netherite (Capacete, Peitoral, Calça e Botas)" \
                "<br>&bull; 1x Espada de Netherite Encantada" \
                "<br>&bull; 1x Picareta de Netherite Encantada" \
-               "<br>&bull; 1x Machado de Netherite" \
-               "<br>&bull; 1x Pá de Netherite" \
-               "<br>&bull; 1x Shield",
+               "<br>&bull; 1x Machado de Netherite Encantado" \
+               "<br>&bull; 1x Pá de Netherite Encantada" \
+               "<br>&bull; 1x Shield Encantado (Geralmente com Banner. Você pode negociar Banners raros com o vendedor)",
     preco: 20.99, estoque: rand(30..80) },
   { nome: "Kit Plus", categoria: "Kits",
     descricao: "Equipamento robusto de Netherite com ótimo custo-benefício." \
                "<br>&bull; 2x Armadura Completa de Netherite (Capacete, Peitoral, Calça e Botas)" \
                "<br>&bull; 1x Espada de Netherite Encantada" \
                "<br>&bull; 1x Picareta de Netherite Encantada" \
-               "<br>&bull; 1x Machado de Netherite",
+               "<br>&bull; 1x Machado de Netherite Encantado",
     preco: 15.99, estoque: rand(30..80) },
   { nome: "Kit VIP", categoria: "Kits",
     descricao: "A porta de entrada para quem quer subir de nível no BawMC." \
                "<br>&bull; 2x Armadura Completa de Diamante (Capacete, Peitoral, Calça e Botas)" \
                "<br>&bull; 1x Espada de Diamante Encantada" \
                "<br>&bull; 1x Picareta de Diamante Encantada" \
-               "<br>&bull; 1x Machado de Diamante" \
-               "<br>&bull; 1x Pá de Diamante",
+               "<br>&bull; 1x Machado de Diamante Encantado" \
+               "<br>&bull; 1x Pá de Diamante Encantada",
     preco: 8.49, estoque: rand(30..80) },
 ]
 
