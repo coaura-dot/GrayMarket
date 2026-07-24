@@ -823,6 +823,9 @@ tbody tr:last-child td { border-bottom: none; }
 .icone-tabela {
   width: 36px;
   height: 36px;
+  object-fit: contain;
+  display: inline-block;
+  flex-shrink: 0;
   image-rendering: pixelated;
   vertical-align: middle;
   border-radius: 6px;

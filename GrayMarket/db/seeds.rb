@@ -32,74 +32,74 @@ preco_diamante  = 3.49
 produtos = [
   # ---------- Armadura de Netherite (peça avulsa) ----------
   { nome: "Capacete de Netherite", categoria: "Netherite",
-    descricao: "Capacete de Netherite encantado.",
+    descricao: "Peça de armadura em Netherite, encantada e pronta para batalha.",
     preco: preco_netherite, estoque: rand(73..144) },
   { nome: "Peitoral de Netherite", categoria: "Netherite",
-    descricao: "Peitoral de Netherite encantado.",
+    descricao: "Peça de armadura em Netherite, encantada e pronta para batalha.",
     preco: preco_netherite, estoque: rand(73..144) },
   { nome: "Calça de Netherite", categoria: "Netherite",
-    descricao: "Calça de Netherite encantada.",
+    descricao: "Peça de armadura em Netherite, encantada e pronta para batalha.",
     preco: preco_netherite, estoque: rand(73..144) },
   { nome: "Botas de Netherite", categoria: "Netherite",
-    descricao: "Botas de Netherite encantadas.",
+    descricao: "Peça de armadura em Netherite, encantada e pronta para batalha.",
     preco: preco_netherite, estoque: rand(73..144) },
 
   # ---------- Utilitários de Netherite ----------
   { nome: "Picareta de Netherite", categoria: "Netherite",
-    descricao: "Picareta de Netherite encantada.",
+    descricao: "Ferramenta em Netherite, encantada para mineração rápida e eficiente.",
     preco: preco_netherite, estoque: rand(73..144) },
   { nome: "Pá de Netherite", categoria: "Netherite",
-    descricao: "Pá de Netherite encantada.",
+    descricao: "Ferramenta em Netherite, encantada para mineração rápida e eficiente.",
     preco: preco_netherite, estoque: rand(73..144) },
   { nome: "Machado de Netherite", categoria: "Netherite",
-    descricao: "Machado de Netherite encantado.",
+    descricao: "Ferramenta em Netherite, encantada para combate e mineração.",
     preco: preco_netherite, estoque: rand(73..144) },
   { nome: "Espada de Netherite", categoria: "Netherite",
-    descricao: "Espada de Netherite encantada.",
+    descricao: "Arma em Netherite, encantada para máximo dano em combate.",
     preco: preco_netherite, estoque: rand(73..144) },
 
   # ---------- Itens de Diamante (armadura ou ferramenta) ----------
   { nome: "Capacete de Diamante", categoria: "Diamante",
-    descricao: "Capacete de Diamante encantado.",
+    descricao: "Peça de armadura em Diamante, encantada e resistente.",
     preco: preco_diamante, estoque: rand(73..144) },
   { nome: "Peitoral de Diamante", categoria: "Diamante",
-    descricao: "Peitoral de Diamante encantado.",
+    descricao: "Peça de armadura em Diamante, encantada e resistente.",
     preco: preco_diamante, estoque: rand(73..144) },
   { nome: "Calça de Diamante", categoria: "Diamante",
-    descricao: "Calça de Diamante encantada.",
+    descricao: "Peça de armadura em Diamante, encantada e resistente.",
     preco: preco_diamante, estoque: rand(73..144) },
   { nome: "Botas de Diamante", categoria: "Diamante",
-    descricao: "Botas de Diamante encantadas.",
+    descricao: "Peça de armadura em Diamante, encantada e resistente.",
     preco: preco_diamante, estoque: rand(73..144) },
   { nome: "Picareta de Diamante", categoria: "Diamante",
-    descricao: "Picareta de Diamante encantada.",
+    descricao: "Ferramenta em Diamante, encantada para mineração eficiente.",
     preco: preco_diamante, estoque: rand(73..144) },
   { nome: "Pá de Diamante", categoria: "Diamante",
-    descricao: "Pá de Diamante encantada.",
+    descricao: "Ferramenta em Diamante, encantada para mineração eficiente.",
     preco: preco_diamante, estoque: rand(73..144) },
   { nome: "Machado de Diamante", categoria: "Diamante",
-    descricao: "Machado de Diamante encantado.",
+    descricao: "Ferramenta em Diamante, encantada para combate e mineração.",
     preco: preco_diamante, estoque: rand(73..144) },
   { nome: "Espada de Diamante", categoria: "Diamante",
-    descricao: "Espada de Diamante encantada.",
+    descricao: "Arma em Diamante, encantada para bons resultados em combate.",
     preco: preco_diamante, estoque: rand(73..144) },
 
   # ---------- Diamante em stack ----------
   { nome: "Diamante x64", categoria: "Diamante",
-    descricao: "Um stack completo (64) de diamantes brutos.",
+    descricao: "Um stack completo (64x) de diamantes brutos, prontos para uso.",
     preco: 4.99, estoque: rand(73..144) },
 
   # ---------- Maça / Tridente ----------
   { nome: "Maça Encantada", categoria: "Maça e Tridente",
-    descricao: "Maça (Mace) encantada, ideal para combos com Wind Charge.",
+    descricao: "Maça encantada, ideal para combos devastadores com Wind Charge.",
     preco: 8.49, estoque: rand(73..144) },
   { nome: "Tridente Encantado", categoria: "Maça e Tridente",
-    descricao: "Tridente encantado.",
+    descricao: "Tridente encantado, com bons encantamentos para combate e mobilidade.",
     preco: 8.49, estoque: rand(73..144) },
 
   # ---------- Esmeralda ----------
   { nome: "Esmeralda x64", categoria: "Esmeralda",
-    descricao: "Um stack completo (64) de esmeraldas.",
+    descricao: "Um stack completo (64x) de esmeraldas, prontas para uso.",
     preco: 3.49, estoque: rand(73..144) },
 
   # ---------- Kits ----------
@@ -107,24 +107,33 @@ produtos = [
     descricao: "Spawner de mob à sua escolha, entregue diretamente no seu terreno.",
     preco: 10.99, preco_original: 15.00, estoque: rand(73..144) },
   { nome: "Kit de Diamante", categoria: "Kits",
-    descricao: "Picareta, pá, machado e espada de Diamante + armadura de Diamante completa (capacete, peitoral, calça e botas).",
+    descricao: "Kit completo de Diamante: picareta, pá, machado e espada, além da armadura completa (capacete, peitoral, calça e botas).",
     preco: 17.99, preco_original: (preco_diamante * 8).round(2), estoque: rand(73..144) },
 
   # ---------- Kits nomeados (Elite / Plus / VIP) ----------
   { nome: "Kit Elite", categoria: "Kits",
-    descricao: "3x capacete, 3x peitoral, 3x calça e 3x botas de Netherite. " \
-               "1x espada de Netherite Full encantada. 1x picareta de Netherite Full, " \
-               "1x machado de Netherite, 1x pá de Netherite e 1x Shield.",
+    descricao: "O kit mais completo do servidor, para quem quer dominar sem limites." \
+               "<br>&bull; 3x armadura completa de Netherite (capacete, peitoral, calça e botas)" \
+               "<br>&bull; 1x espada de Netherite totalmente encantada" \
+               "<br>&bull; 1x picareta de Netherite totalmente encantada" \
+               "<br>&bull; 1x machado de Netherite" \
+               "<br>&bull; 1x pá de Netherite" \
+               "<br>&bull; 1x Shield",
     preco: 20.99, estoque: rand(30..80) },
   { nome: "Kit Plus", categoria: "Kits",
-    descricao: "2x capacete, 2x peitoral, 2x calça e 2x botas de Netherite. " \
-               "1x espada de Netherite Full encantada. 1x picareta de Netherite Full e " \
-               "1x machado de Netherite.",
+    descricao: "Equipamento robusto de Netherite com ótimo custo-benefício." \
+               "<br>&bull; 2x armadura completa de Netherite (capacete, peitoral, calça e botas)" \
+               "<br>&bull; 1x espada de Netherite totalmente encantada" \
+               "<br>&bull; 1x picareta de Netherite totalmente encantada" \
+               "<br>&bull; 1x machado de Netherite",
     preco: 15.99, estoque: rand(30..80) },
   { nome: "Kit VIP", categoria: "Kits",
-    descricao: "2x capacete, 2x peitoral, 2x calça e 2x botas de Diamante. " \
-               "1x espada de Diamante Full encantada. 1x picareta de Diamante Full, " \
-               "1x machado de Diamante e 1x pá de Diamante.",
+    descricao: "A porta de entrada para quem quer subir de nível no BawMC." \
+               "<br>&bull; 2x armadura completa de Diamante (capacete, peitoral, calça e botas)" \
+               "<br>&bull; 1x espada de Diamante totalmente encantada" \
+               "<br>&bull; 1x picareta de Diamante totalmente encantada" \
+               "<br>&bull; 1x machado de Diamante" \
+               "<br>&bull; 1x pá de Diamante",
     preco: 8.49, estoque: rand(30..80) },
 ]
 
