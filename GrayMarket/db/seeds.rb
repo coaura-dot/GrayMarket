@@ -113,27 +113,27 @@ produtos = [
   # ---------- Kits nomeados (Elite / Plus / VIP) ----------
   { nome: "Kit Elite", categoria: "Kits",
     descricao: "O kit mais completo do servidor, para quem quer dominar sem limites." \
-               "<br>&bull; 3x armadura completa de Netherite (capacete, peitoral, calça e botas)" \
-               "<br>&bull; 1x espada de Netherite totalmente encantada" \
-               "<br>&bull; 1x picareta de Netherite totalmente encantada" \
-               "<br>&bull; 1x machado de Netherite" \
-               "<br>&bull; 1x pá de Netherite" \
+               "<br>&bull; 3x Armadura Completa de Netherite (Capacete, Peitoral, Calça e Botas)" \
+               "<br>&bull; 1x Espada de Netherite Encantada" \
+               "<br>&bull; 1x Picareta de Netherite Encantada" \
+               "<br>&bull; 1x Machado de Netherite" \
+               "<br>&bull; 1x Pá de Netherite" \
                "<br>&bull; 1x Shield",
     preco: 20.99, estoque: rand(30..80) },
   { nome: "Kit Plus", categoria: "Kits",
     descricao: "Equipamento robusto de Netherite com ótimo custo-benefício." \
-               "<br>&bull; 2x armadura completa de Netherite (capacete, peitoral, calça e botas)" \
-               "<br>&bull; 1x espada de Netherite totalmente encantada" \
-               "<br>&bull; 1x picareta de Netherite totalmente encantada" \
-               "<br>&bull; 1x machado de Netherite",
+               "<br>&bull; 2x Armadura Completa de Netherite (Capacete, Peitoral, Calça e Botas)" \
+               "<br>&bull; 1x Espada de Netherite Encantada" \
+               "<br>&bull; 1x Picareta de Netherite Encantada" \
+               "<br>&bull; 1x Machado de Netherite",
     preco: 15.99, estoque: rand(30..80) },
   { nome: "Kit VIP", categoria: "Kits",
     descricao: "A porta de entrada para quem quer subir de nível no BawMC." \
-               "<br>&bull; 2x armadura completa de Diamante (capacete, peitoral, calça e botas)" \
-               "<br>&bull; 1x espada de Diamante totalmente encantada" \
-               "<br>&bull; 1x picareta de Diamante totalmente encantada" \
-               "<br>&bull; 1x machado de Diamante" \
-               "<br>&bull; 1x pá de Diamante",
+               "<br>&bull; 2x Armadura Completa de Diamante (Capacete, Peitoral, Calça e Botas)" \
+               "<br>&bull; 1x Espada de Diamante Encantada" \
+               "<br>&bull; 1x Picareta de Diamante Encantada" \
+               "<br>&bull; 1x Machado de Diamante" \
+               "<br>&bull; 1x Pá de Diamante",
     preco: 8.49, estoque: rand(30..80) },
 ]
 

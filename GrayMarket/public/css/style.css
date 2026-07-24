@@ -823,7 +823,11 @@ tbody tr:last-child td { border-bottom: none; }
 .icone-tabela {
   width: 36px;
   height: 36px;
+  min-width: 36px;
+  min-height: 36px;
+  max-width: 36px;
   object-fit: contain;
+  object-position: center;
   display: inline-block;
   flex-shrink: 0;
   image-rendering: pixelated;
