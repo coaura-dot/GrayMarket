@@ -114,8 +114,8 @@ produtos = [
   { nome: "Kit Elite", categoria: "Kits",
     descricao: "Kit de Netherite Elite" \
                "<br>&bull; 3x Armadura Completa de Netherite (Capacete, Peitoral, Calça e Botas)" \
-               "<br>&bull; 1x Espada de Netherite Encantada" \
-               "<br>&bull; 1x Picareta de Netherite Encantada" \
+               "<br>&bull; 2x Espada de Netherite Encantada" \
+               "<br>&bull; 2x Picareta de Netherite Encantada" \
                "<br>&bull; 1x Machado de Netherite Encantado" \
                "<br>&bull; 1x Pá de Netherite Encantada" \
                "<br>&bull; 1x Shield Encantado (Geralmente com Banner. Você pode negociar Banners raros com o vendedor)",
@@ -123,8 +123,9 @@ produtos = [
   { nome: "Kit Plus", categoria: "Kits",
     descricao: "Kit de Netherite Plus." \
                "<br>&bull; 2x Armadura Completa de Netherite (Capacete, Peitoral, Calça e Botas)" \
-               "<br>&bull; 1x Espada de Netherite Encantada" \
-               "<br>&bull; 1x Picareta de Netherite Encantada" \
+               "<br>&bull; 2x Espada de Netherite Encantada" \
+               "<br>&bull; 2x Picareta de Netherite Encantada" \
+               "<br>&bull; 1x Pá de Netherite Encantada" \
                "<br>&bull; 1x Machado de Netherite Encantado",
     preco: 15.99, estoque: rand(30..80) },
   { nome: "Kit VIP", categoria: "Kits",
