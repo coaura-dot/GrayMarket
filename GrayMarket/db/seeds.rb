@@ -109,6 +109,23 @@ produtos = [
   { nome: "Kit de Diamante", categoria: "Kits",
     descricao: "Picareta, pá, machado e espada de Diamante + armadura de Diamante completa (capacete, peitoral, calça e botas).",
     preco: 17.99, preco_original: (preco_diamante * 8).round(2), estoque: rand(73..144) },
+
+  # ---------- Kits nomeados (Elite / Plus / VIP) ----------
+  { nome: "Kit Elite", categoria: "Kits",
+    descricao: "3x capacete, 3x peitoral, 3x calça e 3x botas de Netherite. " \
+               "1x espada de Netherite Full encantada. 1x picareta de Netherite Full, " \
+               "1x machado de Netherite, 1x pá de Netherite e 1x Shield.",
+    preco: 20.99, estoque: rand(30..80) },
+  { nome: "Kit Plus", categoria: "Kits",
+    descricao: "2x capacete, 2x peitoral, 2x calça e 2x botas de Netherite. " \
+               "1x espada de Netherite Full encantada. 1x picareta de Netherite Full e " \
+               "1x machado de Netherite.",
+    preco: 15.99, estoque: rand(30..80) },
+  { nome: "Kit VIP", categoria: "Kits",
+    descricao: "2x capacete, 2x peitoral, 2x calça e 2x botas de Diamante. " \
+               "1x espada de Diamante Full encantada. 1x picareta de Diamante Full, " \
+               "1x machado de Diamante e 1x pá de Diamante.",
+    preco: 8.49, estoque: rand(30..80) },
 ]
 
 produtos.each { |attrs| vendedor.produtos.create!(attrs) }

@@ -79,6 +79,9 @@ class BawmcStore < Sinatra::Base
     # palavras-chave do nome. Cai para um ícone genérico por categoria
     # se nada específico for encontrado.
     ICONES_PRODUTO = {
+      /kit elite/i                 => "kit_elite_shulker",
+      /kit plus/i                  => "kit_plus_shulker",
+      /kit vip/i                   => "kit_vip_shulker",
       /spawner/i                   => "spawner",
       /kit/i                       => "shulker_box",
       /capacete de diamante/i      => "diamond_helmet",
