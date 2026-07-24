@@ -112,7 +112,7 @@ produtos = [
 
   # ---------- Kits nomeados (Elite / Plus / VIP) ----------
   { nome: "Kit Elite", categoria: "Kits",
-    descricao: "O kit mais completo do servidor, para quem quer dominar sem limites." \
+    descricao: "Kit de Netherite Elite" \
                "<br>&bull; 3x Armadura Completa de Netherite (Capacete, Peitoral, Calça e Botas)" \
                "<br>&bull; 1x Espada de Netherite Encantada" \
                "<br>&bull; 1x Picareta de Netherite Encantada" \
@@ -121,14 +121,14 @@ produtos = [
                "<br>&bull; 1x Shield Encantado (Geralmente com Banner. Você pode negociar Banners raros com o vendedor)",
     preco: 20.99, estoque: rand(30..80) },
   { nome: "Kit Plus", categoria: "Kits",
-    descricao: "Equipamento robusto de Netherite com ótimo custo-benefício." \
+    descricao: "Kit de Netherite Plus." \
                "<br>&bull; 2x Armadura Completa de Netherite (Capacete, Peitoral, Calça e Botas)" \
                "<br>&bull; 1x Espada de Netherite Encantada" \
                "<br>&bull; 1x Picareta de Netherite Encantada" \
                "<br>&bull; 1x Machado de Netherite Encantado",
     preco: 15.99, estoque: rand(30..80) },
   { nome: "Kit VIP", categoria: "Kits",
-    descricao: "A porta de entrada para quem quer subir de nível no BawMC." \
+    descricao: "Kit de Diamante VIP." \
                "<br>&bull; 2x Armadura Completa de Diamante (Capacete, Peitoral, Calça e Botas)" \
                "<br>&bull; 1x Espada de Diamante Encantada" \
                "<br>&bull; 1x Picareta de Diamante Encantada" \
