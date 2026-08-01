@@ -108,7 +108,7 @@ produtos = [
     preco: 10.99, preco_original: 15.00, estoque: rand(73..144) },
   { nome: "Kit de Diamante", categoria: "Kits",
     descricao: "Kit completo de Diamante: picareta, pá, machado e espada, além da armadura completa (capacete, peitoral, calça e botas).",
-    preco: 9.99, preco_original: (preco_diamante * 8).round(2), estoque: rand(73..144) },
+    preco: 5.99, preco_original: (preco_diamante * 8).round(2), estoque: rand(73..144) },
 
   # ---------- Kits nomeados (Elite / Plus / VIP) ----------
   { nome: "Kit Elite", categoria: "Kits",
